@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EFandLinq.Models.ViewModel>
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title></title>
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script type="text/javascript" src="@Url.Action("~/scripts/bootstrap.min.js")"></script>
+    </head>
+    <body>
+        <div>
+            <h4 class="text-center text-uppercase">
+                Product sales report Month wise
+            </h4>
+            <br />
+            <table class="table table-sm table-dark" style="width:50%; margin-left: auto; margin-right: auto">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Product Name</th>
+                        <th>Qty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.purchaseorder.Date.Value.ToString("MMM/yy")</td>
+                            <td>@item.product.Name</td>
+                            <td>@item.purchaseorderdetail.Qty</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+        <br />
+        <div class="text-center">
+            @Html.ActionLink("Maximum price order month wise", "MaxOrder")
+        </div>
+    </body>
+    </html>
+

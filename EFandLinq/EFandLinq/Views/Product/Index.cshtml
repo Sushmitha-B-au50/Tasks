@@ -1,0 +1,50 @@
+﻿
+@model IEnumerable<EFandLinq.Models.ViewModel>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+   
+    <script type="text/javascript" src="@Url.Action("~/scripts/bootstrap.min.js")"></script>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <h4 class="text-center text-uppercase">
+            List of Purchase order against customer
+        </h4>
+        <br />
+        <table class="table table-sm table-dark" style="width:50%; margin-left: auto; margin-right: auto">
+            <thead>
+                <tr>
+                    <th style="width: 30%">Customer Name</th>
+                    <th style="width: 30%">POID</th>
+                    <th style="width: 30%">Product Name</th>
+                    <th style="width: 30%">Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.customer.Name</td>
+                        <td>@item.purchaseorder.POID</td>
+                        <td>@item.product.Name</td>
+                        <td>@item.purchaseorderdetail.Price</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <div class="text-center">
+    @Html.ActionLink("Month wise customer report with products", "CustomerReport")
+    </div>
+</body>
+</html>  
